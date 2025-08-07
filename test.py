@@ -1,1 +1,2 @@
 print ("kuda")
+print ("hihi")
