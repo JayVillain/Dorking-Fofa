@@ -1,2 +1,2 @@
 print ("kuda")
-print ("hadffff")
+print ("hff")
