@@ -20,9 +20,8 @@ def proses_transaksi():
     """
     Memproses alur transaksi, dari input belanjaan sampai hitung kembalian.
     """
-    keranjang_belanja = []  # Menggunakan list untuk menyimpan item belanja
-    total_belanja = 0
-
+    keranjang_belanja = []
+    
     print("\nSelamat datang di Kasir Sederhana!")
     tampilkan_menu_produk()
     print("Ketik 'selesai' untuk menyelesaikan belanja.")
@@ -30,8 +29,8 @@ def proses_transaksi():
     while True:
         nama_produk = input("Masukkan nama produk: ").lower()
         if nama_produk == 'selesai':
-            break
-        
+            break  # Keluar dari loop input produk
+
         if nama_produk in DAFTAR_PRODUK:
             try:
                 jumlah = int(input(f"Masukkan jumlah {nama_produk}: "))
@@ -40,11 +39,9 @@ def proses_transaksi():
                     keranjang_belanja.append({
                         'produk': nama_produk,
                         'jumlah': jumlah,
-                        'harga_satuan': harga_satuan,
-                        'subtotal': harga_satuan * jumlah
+                        'harga_satuan': harga_satuan
                     })
-                    total_belanja += harga_satuan * jumlah
-                    print(f"{jumlah} {nama_produk} berhasil ditambahkan.")
+                    print(f"{jumlah} {nama_produk} berhasil ditambahkan ke keranjang.")
                 else:
                     print("Jumlah harus lebih dari 0.")
             except ValueError:
@@ -52,16 +49,22 @@ def proses_transaksi():
         else:
             print("Produk tidak tersedia.")
 
+    # Jika keranjang kosong, transaksi dibatalkan
     if not keranjang_belanja:
         print("Transaksi dibatalkan karena keranjang kosong.")
         return
 
+    # Menghitung total belanja dari keranjang
+    total_belanja = sum(item['jumlah'] * item['harga_satuan'] for item in keranjang_belanja)
+
     print("\n--- Rincian Belanja ---")
     for item in keranjang_belanja:
-        print(f"{item['produk'].capitalize()} ({item['jumlah']} x Rp{item['harga_satuan']}) = Rp{item['subtotal']}")
+        subtotal = item['jumlah'] * item['harga_satuan']
+        print(f"{item['produk'].capitalize()} ({item['jumlah']} x Rp{item['harga_satuan']}) = Rp{subtotal}")
     
     print(f"\nTotal Belanja: Rp{total_belanja}")
 
+    # Proses pembayaran
     while True:
         try:
             uang_pembayaran = int(input("Masukkan uang pembayaran: Rp"))
@@ -69,7 +72,7 @@ def proses_transaksi():
                 kembalian = uang_pembayaran - total_belanja
                 print(f"Kembalian: Rp{kembalian}")
                 simpan_riwayat(keranjang_belanja, total_belanja, uang_pembayaran, kembalian)
-                print("Transaksi selesai!")
+                print("Transaksi selesai! Riwayat disimpan.")
                 break
             else:
                 print("Uang pembayaran kurang. Silakan masukkan jumlah yang cukup.")
@@ -85,7 +88,8 @@ def simpan_riwayat(keranjang, total, pembayaran, kembalian):
         file.write(f"Waktu Transaksi: {waktu_transaksi}\n")
         file.write("--- Detail Pembelian ---\n")
         for item in keranjang:
-            file.write(f"- {item['produk'].capitalize()}: {item['jumlah']} x Rp{item['harga_satuan']} = Rp{item['subtotal']}\n")
+            subtotal = item['jumlah'] * item['harga_satuan']
+            file.write(f"- {item['produk'].capitalize()}: {item['jumlah']} x Rp{item['harga_satuan']} = Rp{subtotal}\n")
         file.write(f"\nTotal Belanja: Rp{total}\n")
         file.write(f"Uang Pembayaran: Rp{pembayaran}\n")
         file.write(f"Kembalian: Rp{kembalian}\n")
