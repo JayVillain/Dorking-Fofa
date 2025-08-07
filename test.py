@@ -93,7 +93,7 @@ def simpan_riwayat(keranjang, total, pembayaran, kembalian):
 # Jalankan fungsi utama
 if __name__ == "__main__":
     while True:
-        print("\n--- Sistem Kasir ---")
+        print("\n--- Sistem ssssss ---")
         print("1. Mulai Transaksi Baru")
         print("2. Keluar")
         
