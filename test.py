@@ -105,4 +105,4 @@ if __name__ == "__main__":
             print("Terima kasih sudah menggunakan kasir ini!")
             break
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
+            print("Pilihan tidak valid. Silakan coba sasa.")
