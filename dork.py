@@ -5,7 +5,7 @@ import base64 # Import modul base64
 
 # --- Konfigurasi ---
 # Ganti dengan email dan kunci API Fofa kamu
-FOFA_EMAIL = "@gmail.com"
+FOFA_EMAIL = "gunakna email mu @gmail.com"
 FOFA_KEY = "gunakan api mu "
 
 # Nama file untuk menyimpan URL yang ditemukan
