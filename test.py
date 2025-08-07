@@ -97,12 +97,12 @@ if __name__ == "__main__":
         print("1. Mulai Transaksi Baru")
         print("2. Keluar")
         
-        pilihan = input("Masukkan pilihan (1/2): ")
+        pilihan = input("Masukkan pilihasssn (1/2): ")
         
         if pilihan == '1':
             proses_transaksi()
         elif pilihan == '2':
-            print("Terima kasih sudah menggunakan kasir ini!")
+            print("Terima kasih sudah asdada kasir ini!")
             break
         else:
             print("Pilihan tidak valid. Silakan coba sasa.")
