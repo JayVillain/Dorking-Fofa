@@ -1,47 +1,108 @@
-def masukkan_data():
-    """
-    Fungsi untuk memasukkan data nama dan usia ke dalam file.
-    """
-    nama = input("Masukkan nama: ")
-    usia = input("Masukkan usia: ")
-    
-    with open("data_penduduk.txt", "a") as file:
-        file.write(f"Nama: {nama}, Usia: {usia}\n")
-    
-    print("Data berhasil disimpan!")
+import datetime
 
-def lihat_data():
+# Daftar produk dengan harga
+DAFTAR_PRODUK = {
+    "apel": 5000,
+    "jeruk": 7000,
+    "mangga": 10000,
+    "anggur": 15000,
+    "pisang": 4000
+}
+
+def tampilkan_menu_produk():
+    """Menampilkan daftar produk dan harganya."""
+    print("--- Daftar Produk ---")
+    for produk, harga in DAFTAR_PRODUK.items():
+        print(f"- {produk.capitalize()}: Rp{harga}")
+    print("---------------------")
+
+def proses_transaksi():
     """
-    Fungsi untuk membaca dan menampilkan semua data dari file.
+    Memproses seluruh alur transaksi, dari input belanjaan sampai hitung kembalian.
     """
-    try:
-        with open("data_penduduk.txt", "r") as file:
-            data = file.readlines()
-            if not data:
-                print("Belum ada data yang tersimpan.")
+    keranjang_belanja = {}
+    total_belanja = 0
+
+    print("Selamat datang di Kasir Sederhana!")
+    tampilkan_menu_produk()
+    print("Ketik 'selesai' jika sudah selesai berbelanja.")
+    
+    while True:
+        nama_produk = input("Masukkan nama produk: ").lower()
+        if nama_produk == 'selesai':
+            break
+
+        if nama_produk in DAFTAR_PRODUK:
+            try:
+                jumlah = int(input(f"Masukkan jumlah {nama_produk}: "))
+                if jumlah > 0:
+                    harga_satuan = DAFTAR_PRODUK[nama_produk]
+                    keranjang_belanja[nama_produk] = {
+                        'jumlah': jumlah,
+                        'harga_satuan': harga_satuan
+                    }
+                    total_belanja += harga_satuan * jumlah
+                    print(f"{jumlah} {nama_produk} berhasil ditambahkan.")
+                else:
+                    print("Jumlah harus lebih dari 0.")
+            except ValueError:
+                print("Jumlah tidak valid. Harap masukkan angka.")
+        else:
+            print("Produk tidak tersedia.")
+
+    if total_belanja == 0:
+        print("Transaksi dibatalkan karena keranjang kosong.")
+        return
+
+    print("\n--- Rincian Belanja ---")
+    for produk, info in keranjang_belanja.items():
+        subtotal = info['jumlah'] * info['harga_satuan']
+        print(f"{produk.capitalize()} ({info['jumlah']} x Rp{info['harga_satuan']}) = Rp{subtotal}")
+    print(f"\nTotal Belanja: Rp{total_belanja}")
+
+    while True:
+        try:
+            uang_pembayaran = int(input("Masukkan uang pembayaran: Rp"))
+            if uang_pembayaran >= total_belanja:
+                kembalian = uang_pembayaran - total_belanja
+                print(f"Kembalian: Rp{kembalian}")
+                simpan_riwayat(keranjang_belanja, total_belanja, uang_pembayaran, kembalian)
+                print("Transaksi selesai!")
+                break
             else:
-                print("--- Daftar Data ---")
-                for baris in data:
-                    print(baris.strip())
-                print("-------------------")
-    except FileNotFoundError:
-        print("Belum ada data yang tersimpan. Silakan masukkan data terlebih dahulu.")
+                print("Uang pembayaran kurang. Silakan masukkan jumlah yang cukup.")
+        except ValueError:
+            print("Jumlah uang tidak valid. Harap masukkan angka.")
 
-# Loop utama untuk menampilkan menu
-while True:
-    print("\nMenu Pendataan:")
-    print("1. Masukkan data")
-    print("2. Lihat data")
-    print("3. Keluar")
+def simpan_riwayat(keranjang, total, pembayaran, kembalian):
+    """Mencatat transaksi ke dalam file teks."""
+    waktu_transaksi = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    pilihan = input("Masukkan pilihan (1/2/3): ")
-    
-    if pilihan == '1':
-        masukkan_data()
-    elif pilihan == '2':
-        lihat_data()
-    elif pilihan == '3':
-        print("Terima kasih, sampai jumpa!")
-        break
-    else:
-        print("Pilihan tidak valid. Silakan coba lagi.")
+    with open("riwayat_transaksi.txt", "a") as file:
+        file.write("====================================\n")
+        file.write(f"Waktu Transaksi: {waktu_transaksi}\n")
+        file.write("--- Detail Pembelian ---\n")
+        for produk, info in keranjang.items():
+            subtotal = info['jumlah'] * info['harga_satuan']
+            file.write(f"- {produk.capitalize()}: {info['jumlah']} x Rp{info['harga_satuan']} = Rp{subtotal}\n")
+        file.write(f"\nTotal Belanja: Rp{total}\n")
+        file.write(f"Uang Pembayaran: Rp{pembayaran}\n")
+        file.write(f"Kembalian: Rp{kembalian}\n")
+        file.write("====================================\n\n")
+
+# Jalankan fungsi utama
+if __name__ == "__main__":
+    while True:
+        print("\n--- Sistem Kasir ---")
+        print("1. Mulai Transaksi Baru")
+        print("2. Keluar")
+        
+        pilihan = input("Masukkan pilihan (1/2): ")
+        
+        if pilihan == '1':
+            proses_transaksi()
+        elif pilihan == '2':
+            print("Terima kasih sudah menggunakan kasir ini!")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi.")
