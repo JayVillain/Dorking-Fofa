@@ -1,13 +1,14 @@
 /* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* Variabel Warna dan Animasi */
+/* === [PALET BARU] Variabel Warna "Warm Professional" === */
 :root {
-    --primary-color: #64FFDA;
-    --secondary-bg: #112240;
-    --text-primary: #CCD6F6;
-    --text-secondary: #8892B0;
-    --bg-color: #0A192F;
+    --primary-color: #E5A073;      /* Aksen Utama - Terracotta Hangat */
+    --secondary-bg: #242933;       /* Background Kartu */
+    --text-primary: #EAEAEA;       /* Teks Utama - Putih Gading */
+    --text-secondary: #9E9E9E;     /* Teks Sekunder - Abu-abu */
+    --bg-color: #1A1D24;           /* Background Utama - Arang */
+    
     --transition-speed: 0.5s;
     --easing: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -40,14 +41,8 @@ img {
 
 /* Keyframes untuk Animasi */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Header */
@@ -65,7 +60,7 @@ img {
 }
 
 .header.scrolled {
-    background-color: rgba(10, 25, 47, 0.85);
+    background-color: rgba(26, 29, 36, 0.85); /* Disesuaikan dengan BG baru */
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
@@ -102,8 +97,9 @@ img {
 }
 
 .btn-primary:hover {
-    background-color: rgba(100, 255, 218, 0.1);
+    background-color: rgba(229, 160, 115, 0.1); /* Disesuaikan dengan aksen baru */
     transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(229, 160, 115, 0.15);
 }
 
 /* Hero Section */
@@ -117,16 +113,8 @@ img {
     padding: 6rem 10% 2rem;
 }
 
-.hero-content {
-    flex: 1;
-    max-width: 600px;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
-}
-
+.hero-content { flex: 1; max-width: 600px; }
+.hero-content h1 { font-size: 3.5rem; line-height: 1.1; }
 .hero-content p {
     font-size: 1.1rem;
     margin: 1.5rem 0;
@@ -134,73 +122,47 @@ img {
     max-width: 500px;
 }
 
-.hero-image {
-    flex-shrink: 0;
-    position: relative;
-}
-
+.hero-image { flex-shrink: 0; position: relative; }
 .hero-image img {
     width: 300px;
     height: 300px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--primary-color);
-    box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
+    /* Shadow disesuaikan dengan aksen baru agar lebih hangat */
+    box-shadow: 0 0 35px rgba(229, 160, 115, 0.4); 
 }
 
-.social-links {
-    margin-bottom: 2rem;
-    display: flex;
-    gap: 1.5rem;
-}
-
+.social-links { margin-bottom: 2rem; display: flex; gap: 1.5rem; }
 .social-links a {
     color: var(--text-secondary);
     font-size: 1.8rem;
     transition: color 0.3s var(--easing), transform 0.3s var(--easing);
 }
-
-.social-links a:hover {
-    color: var(--primary-color);
-    transform: translateY(-3px);
-}
+.social-links a:hover { color: var(--primary-color); transform: translateY(-3px); }
 
 /* Content Sections */
-.content-section {
-    padding: 6rem 10%;
-}
+.content-section { padding: 6rem 10%; }
+.content-section h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
 
 /* Project Section */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 .project-card {
     background-color: var(--secondary-bg);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     overflow: hidden;
-    transition: transform 0.4s var(--easing), background-color 0.4s var(--easing);
+    transition: transform 0.4s var(--easing), box-shadow 0.4s var(--easing);
 }
 
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.project-card h3 {
-    padding: 1rem 1.5rem 0.5rem;
-}
-
-.project-card p {
-    padding: 0 1.5rem;
-    color: var(--text-secondary);
-}
-
+.project-card img { width: 100%; height: 200px; object-fit: cover; }
+.project-card h3 { padding: 1.25rem 1.5rem 0.5rem; }
+.project-card p { padding: 0 1.5rem; color: var(--text-secondary); }
 .project-card .btn-secondary {
     display: inline-block;
     padding: 1rem 1.5rem;
@@ -208,10 +170,9 @@ img {
     text-decoration: none;
     font-weight: 600;
 }
-
-.project-card:hover {
-    transform: translateY(-7px);
-    background-color: #1A2D4E;
+.project-card:hover { 
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 /* Footer */
@@ -226,7 +187,6 @@ img {
     opacity: 0;
     animation: fadeInUp 1s var(--easing) forwards;
 }
-
 .hero-content h1.animate-on-load { animation-delay: 0.5s; }
 .hero-content p.animate-on-load { animation-delay: 0.7s; }
 .social-links.animate-on-load { animation-delay: 0.9s; }
@@ -238,11 +198,7 @@ img {
     transform: translateY(30px);
     transition: opacity 0.8s var(--easing), transform 0.8s var(--easing);
 }
-
-.fade-in-element.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.fade-in-element.visible { opacity: 1; transform: translateY(0); }
 
 /* Media Query untuk Responsivitas */
 @media (max-width: 992px) {
@@ -251,18 +207,13 @@ img {
         text-align: center;
         padding-top: 8rem;
     }
-
     .hero-content {
         max-width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
+    .hero-content h1 { font-size: 2.5rem; }
     .hero-image img {
         width: 250px;
         height: 250px;
@@ -271,9 +222,7 @@ img {
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        display: none; /* Sembunyikan navbar di mobile, bisa ditambahkan hamburger menu nanti */
-    }
+    .navbar { display: none; }
     .content-section, .hero {
         padding-left: 5%;
         padding-right: 5%;
