@@ -12,16 +12,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 2. Intersection Observer untuk animasi scroll
     const observerOptions = {
-        root: null, // viewport
+        root: null,
         rootMargin: '0px',
-        threshold: 0.1 // elemen dianggap terlihat jika 10% areanya masuk viewport
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Hentikan observasi setelah animasi berjalan
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach((card, index) => {
         card.classList.add('fade-in-element');
-        // Berikan delay yang berbeda untuk setiap kartu berdasarkan urutannya
         card.style.transitionDelay = `${index * 150}ms`; 
         observer.observe(card);
     });
