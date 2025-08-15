@@ -143,35 +143,31 @@ img {
 .content-section { padding: 6rem 10%; }
 .content-section h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
 
-/* Project Section */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+/* [BARU] Styling untuk konten "Tentang Saya" yang baru */
+.about-content {
+    max-width: 750px; /* Batasi lebar teks agar mudah dibaca */
+    margin: 0 auto; /* Posisikan di tengah */
+    text-align: center; /* Ratakan teks ke tengah */
 }
 
-.project-card {
-    background-color: var(--secondary-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    overflow: hidden;
-    transition: transform 0.4s var(--easing), box-shadow 0.4s var(--easing);
+.about-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
 }
 
-.project-card img { width: 100%; height: 200px; object-fit: cover; }
-.project-card h3 { padding: 1.25rem 1.5rem 0.5rem; }
-.project-card p { padding: 0 1.5rem; color: var(--text-secondary); }
-.project-card .btn-secondary {
-    display: inline-block;
-    padding: 1rem 1.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
+.about-content p strong, .about-content p em {
+    color: var(--text-primary);
+    font-style: normal;
 }
-.project-card:hover { 
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+.about-content .btn-primary {
+    margin-top: 2rem; /* Beri jarak antara paragraf terakhir dan tombol */
 }
+
+
+/* [DIHAPUS] Semua style untuk .project-grid dan .project-card dihilangkan */
 
 /* Footer */
 .footer {
