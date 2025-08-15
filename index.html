@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nama Kamu | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -19,14 +21,33 @@
 
     <main>
         <section id="hero" class="hero">
-            <h1>Halo, saya kuntul kuda</h1>
-            <p>Seorang [Profesi Kamu] yang bersemangat dalam menciptakan solusi digital yang inovatif.</p>
-            <a href="#projects" class="btn-primary">Lihat Karya Saya</a>
+            <div class="hero-content">
+                <h1 class="animate-on-load">Halo, saya [Nama Kamu]</h1>
+                <p class="animate-on-load">Seorang [Profesi Kamu] yang bersemangat dalam menciptakan solusi digital yang inovatif dan memanjakan mata.</p>
+
+                <div class="social-links animate-on-load">
+                    <a href="https://github.com/usernamekamu" target="_blank" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://instagram.com/usernamekamu" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/usernamekamu" target="_blank" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+
+                <a href="#projects" class="btn-primary animate-on-load">Lihat Karya Saya</a>
+            </div>
+
+            <div class="hero-image animate-on-load">
+                <img src="path/to/your-photo.jpg" alt="Foto profil [Nama Kamu]">
+            </div>
         </section>
 
         <section id="about" class="content-section">
             <h2>Tentang Saya</h2>
-            <p>Deskripsi singkat tentang diri kamu, passion, dan apa yang membuatmu unik.</p>
+            <p>Deskripsi singkat tentang diri kamu, passion, dan apa yang membuatmu unik. Ceritakan perjalanan karir atau pendidikanmu di sini dan teknologi apa yang paling kamu sukai.</p>
         </section>
 
         <section id="projects" class="content-section">
@@ -35,21 +56,27 @@
                 <article class="project-card">
                     <img src="path/to/project-image1.jpg" alt="Deskripsi Proyek 1">
                     <h3>Nama Proyek 1</h3>
-                    <p>Deskripsi singkat proyek dan teknologi yang digunakan.</p>
+                    <p>Deskripsi singkat proyek dan teknologi yang digunakan (misal: HTML, CSS, React).</p>
                     <a href="#" class="btn-secondary">Lihat Detail</a>
                 </article>
                 <article class="project-card">
                     <img src="path/to/project-image2.jpg" alt="Deskripsi Proyek 2">
                     <h3>Nama Proyek 2</h3>
-                    <p>Deskripsi singkat proyek dan teknologi yang digunakan.</p>
+                    <p>Deskripsi singkat proyek dan teknologi yang digunakan (misal: Node.js, Express, MongoDB).</p>
                     <a href="#" class="btn-secondary">Lihat Detail</a>
                 </article>
-                </div>
+                 <article class="project-card">
+                    <img src="path/to/project-image3.jpg" alt="Deskripsi Proyek 3">
+                    <h3>Nama Proyek 3</h3>
+                    <p>Deskripsi singkat proyek dan teknologi yang digunakan (misal: Figma, UI/UX Design).</p>
+                    <a href="#" class="btn-secondary">Lihat Detail</a>
+                </article>
+            </div>
         </section>
 
         <section id="contact" class="content-section">
             <h2>Hubungi Saya</h2>
-            <p>Tertarik untuk bekerja sama? Kirimkan saya pesan!</p>
+            <p>Tertarik untuk bekerja sama atau sekadar bertanya? Jangan ragu untuk mengirimkan saya pesan!</p>
             <a href="mailto:emailkamu@example.com" class="btn-primary">Kirim Email</a>
         </section>
     </main>
