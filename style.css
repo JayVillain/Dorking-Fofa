@@ -1,14 +1,13 @@
 /* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* === [PALET BARU] Variabel Warna "Warm Professional" === */
+/* Variabel Warna "Warm Professional" */
 :root {
-    --primary-color: #E5A073;      /* Aksen Utama - Terracotta Hangat */
-    --secondary-bg: #242933;       /* Background Kartu */
-    --text-primary: #EAEAEA;       /* Teks Utama - Putih Gading */
-    --text-secondary: #9E9E9E;     /* Teks Sekunder - Abu-abu */
-    --bg-color: #1A1D24;           /* Background Utama - Arang */
-    
+    --primary-color: #E5A073;
+    --secondary-bg: #242933;
+    --text-primary: #EAEAEA;
+    --text-secondary: #9E9E9E;
+    --bg-color: #1A1D24;
     --transition-speed: 0.5s;
     --easing: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -60,7 +59,7 @@ img {
 }
 
 .header.scrolled {
-    background-color: rgba(26, 29, 36, 0.85); /* Disesuaikan dengan BG baru */
+    background-color: rgba(26, 29, 36, 0.85);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
@@ -97,7 +96,7 @@ img {
 }
 
 .btn-primary:hover {
-    background-color: rgba(229, 160, 115, 0.1); /* Disesuaikan dengan aksen baru */
+    background-color: rgba(229, 160, 115, 0.1);
     transform: translateY(-3px);
     box-shadow: 0 4px 20px rgba(229, 160, 115, 0.15);
 }
@@ -129,7 +128,6 @@ img {
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--primary-color);
-    /* Shadow disesuaikan dengan aksen baru agar lebih hangat */
     box-shadow: 0 0 35px rgba(229, 160, 115, 0.4); 
 }
 
