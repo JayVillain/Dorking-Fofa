@@ -143,16 +143,17 @@ img {
 .content-section { padding: 6rem 10%; }
 .content-section h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
 
-/* [BARU] Styling untuk konten "Tentang Saya" yang baru */
+/* Styling untuk konten "Tentang Saya" */
 .about-content {
-    max-width: 750px; /* Batasi lebar teks agar mudah dibaca */
-    margin: 0 auto; /* Posisikan di tengah */
-    text-align: center; /* Ratakan teks ke tengah */
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
 }
 
+/* === [PERBAIKAN] Ukuran Font Diperbesar === */
 .about-content p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Ukuran font diperbesar dari 1.1rem menjadi 1.2rem */
     line-height: 1.8;
     margin-bottom: 1.5rem;
 }
@@ -163,11 +164,8 @@ img {
 }
 
 .about-content .btn-primary {
-    margin-top: 2rem; /* Beri jarak antara paragraf terakhir dan tombol */
+    margin-top: 2rem;
 }
-
-
-/* [DIHAPUS] Semua style untuk .project-grid dan .project-card dihilangkan */
 
 /* Footer */
 .footer {
