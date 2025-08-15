@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // 2. Animasi Fade-in saat elemen terlihat di layar
+    // 2. Intersection Observer untuk animasi scroll
     const observerOptions = {
         root: null, // viewport
         rootMargin: '0px',
@@ -26,11 +26,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }, observerOptions);
 
-    // Ambil semua elemen yang ingin dianimasikan
-    const sectionsToAnimate = document.querySelectorAll('.content-section, .project-card');
+    // Ambil semua elemen umum yang ingin dianimasikan
+    const sectionsToAnimate = document.querySelectorAll('.content-section');
     sectionsToAnimate.forEach(section => {
-        section.classList.add('fade-in-element'); // Tambahkan class awal
+        section.classList.add('fade-in-element');
         observer.observe(section);
+    });
+
+    // Logika Khusus untuk Efek Stagger (berurutan) pada Kartu Proyek
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+        card.classList.add('fade-in-element');
+        // Berikan delay yang berbeda untuk setiap kartu berdasarkan urutannya
+        card.style.transitionDelay = `${index * 150}ms`; 
+        observer.observe(card);
     });
 
 });
