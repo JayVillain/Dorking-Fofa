@@ -26,19 +26,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }, observerOptions);
 
-    // Ambil semua elemen umum yang ingin dianimasikan
+    // Ambil semua elemen content-section yang ingin dianimasikan
     const sectionsToAnimate = document.querySelectorAll('.content-section');
     sectionsToAnimate.forEach(section => {
         section.classList.add('fade-in-element');
         observer.observe(section);
-    });
-
-    // Logika Khusus untuk Efek Stagger (berurutan) pada Kartu Proyek
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-        card.classList.add('fade-in-element');
-        card.style.transitionDelay = `${index * 150}ms`; 
-        observer.observe(card);
     });
 
 });
