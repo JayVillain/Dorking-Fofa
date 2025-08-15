@@ -1,14 +1,18 @@
-/* Import Font (contoh: dari Google Fonts) */
+/* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* === [PERUBAHAN] Variabel Warna Tema Gelap (Palet Biru Laut Dalam) === */
+/* Variabel Warna dan Animasi */
 :root {
-    --primary-color: #64FFDA; /* Teal/Mint sebagai aksen */
-    --secondary-bg: #112240;  /* Warna untuk kartu/elemen layer kedua */
-    --text-primary: #CCD6F6; /* Warna teks utama */
-    --text-secondary: #8892B0;/* Warna teks sekunder (deskripsi, dll) */
-    --bg-color: #0A192F;      /* Background utama yang sangat gelap */
-    --transition-speed: 0.3s;
+    /* Warna dari sebelumnya */
+    --primary-color: #64FFDA;
+    --secondary-bg: #112240;
+    --text-primary: #CCD6F6;
+    --text-secondary: #8892B0;
+    --bg-color: #0A192F;
+    
+    /* === [PERUBAHAN] Variabel Animasi Baru === */
+    --transition-speed: 0.5s; /* Sedikit lebih lambat agar lebih anggun */
+    --easing: cubic-bezier(0.165, 0.84, 0.44, 1); /* Easing custom yang sangat smooth */
 }
 
 /* Reset dan Aturan Dasar */
@@ -22,72 +26,77 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
-    color: var(--text-primary); /* Menggunakan warna teks utama dari variabel */
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased; /* Membuat font lebih halus di beberapa browser */
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- EFEK SMOOTH INTI (Dengan Penyesuaian Warna) --- */
-
-/* 1. Transisi Halus pada Tautan dan Tombol */
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: all var(--transition-speed) ease;
+/* === [BARU] Keyframes untuk animasi pembuka dan scroll === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-a:hover {
-    color: darken(var(--primary-color), 10%);
+/* === [BARU] Kelas untuk animasi pembuka di Hero Section === */
+.animate-on-load {
+    opacity: 0; /* Mulai dalam keadaan tidak terlihat */
+    animation: fadeInUp 1s var(--easing) forwards;
 }
 
-.btn-primary {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    font-weight: 600;
+.hero h1.animate-on-load {
+    animation-delay: 0.5s;
 }
+.hero p.animate-on-load {
+    animation-delay: 0.7s;
+}
+.hero .btn-primary.animate-on-load {
+    animation-delay: 0.9s;
+}
+
+
+/* === [PENYEMPURNAAN] Animasi Scroll yang Lebih Lembut === */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(30px); /* Jarak gerak sedikit lebih jauh untuk efek yang lebih jelas */
+    transition: opacity 0.8s var(--easing), transform 0.8s var(--easing);
+}
+
+.fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Penyesuaian Transisi Lainnya --- */
 
 .btn-primary:hover {
-    background-color: rgba(100, 255, 218, 0.1); /* Efek glow saat hover */
+    background-color: rgba(100, 255, 218, 0.1);
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.1);
+    /* Transisi sekarang menggunakan variabel --easing */
+    transition: all 0.25s var(--easing);
 }
 
-/* 2. Animasi Halus pada Kartu Proyek */
 .project-card {
     background-color: var(--secondary-bg);
     border-radius: 8px;
-    /* Shadow di mode gelap lebih baik halus atau tidak ada sama sekali */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     overflow: hidden;
     padding: 1.5rem;
-    transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    /* Transisi sekarang menggunakan variabel --easing */
+    transition: transform 0.4s var(--easing), background-color 0.4s var(--easing);
 }
 
 .project-card:hover {
-    transform: translateY(-5px); /* Efek terangkat lebih terlihat di mode gelap */
-    background-color: #1A2D4E; /* Sedikit lebih terang saat di-hover */
+    transform: translateY(-7px);
+    background-color: #1A2D4E;
 }
 
-.project-card h3 {
-    color: var(--text-primary);
-}
-
-.project-card p {
-    color: var(--text-secondary);
-}
-
-/* --- Penataan Layout --- */
-.header, .footer, .content-section {
-    padding: 2rem 5%;
-}
-
-h1, h2 {
-    color: var(--text-primary);
-}
-
-/* === [PERUBAHAN] Header dengan Efek Kaca (Glassmorphism) === */
+/* Sisa CSS dari sebelumnya (tidak perlu diubah) */
 .header {
     position: fixed;
     width: 100%;
@@ -95,15 +104,15 @@ h1, h2 {
     left: 0;
     z-index: 100;
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    padding: 1.5rem 5%; /* Sedikit padding agar tidak terlalu mepet */
 }
 
 .header.scrolled {
-    background-color: rgba(10, 25, 47, 0.85); /* Warna background utama dengan transparansi */
-    backdrop-filter: blur(10px); /* Efek blur pada konten di belakangnya */
+    background-color: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-/* Aturan CSS lain dari sebelumnya... */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -111,6 +120,7 @@ h1, h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0 5%;
 }
 
 .project-grid {
@@ -119,14 +129,6 @@ h1, h2 {
     gap: 2rem;
 }
 
-/* CSS untuk animasi fade-in dari JavaScript (tetap sama) */
-.fade-in-element {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-element.visible {
-    opacity: 1;
-    transform: translateY(0);
+.content-section {
+    padding: 4rem 5%;
 }
