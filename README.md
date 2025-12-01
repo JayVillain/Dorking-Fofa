@@ -1,1 +1,1 @@
-hae kuda
+hae kimak
