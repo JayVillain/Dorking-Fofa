@@ -1,1 +1,1 @@
-push
+gada yg di update bjir
