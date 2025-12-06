@@ -1,1 +1,1 @@
-kuda terbang
+ss
